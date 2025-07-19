@@ -1,7 +1,5 @@
-
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
 
 class BasePage(object):
     def __init__(self, driver):
@@ -13,7 +11,7 @@ class BasePage(object):
 
     # для получения текста
     def get_text(self, locator):
-        return self.driver.find_element(*locator).text
+        return self.find_element(locator).text
 
     # для клика по элементу
     def click_on_element(self, locator):
@@ -25,8 +23,11 @@ class BasePage(object):
 
     # для ввода данных в поле
     def input_value(self, locator, text):
-        self.driver.find_element(*locator).send_keys(text)
+        self.find_element(locator).send_keys(text)
 
+    # для очистки поля
+    def clear_field(self, locator):
+        self.find_element(locator).clear()
 
 
 
